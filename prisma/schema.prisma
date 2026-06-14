@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  category    Category
+  price       Float
+  priceUnit   String   @default("/day")
+  description String?
+  features    String[]
+  imageUrl    String
+  badge       String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Category {
+  DRONE
+  VEHICLE
+  AI_SYSTEM
+}
+
+model HeroSlide {
+  id          String   @id @default(cuid())
+  headline    String
+  subheadline String?
+  ctaLabel    String
+  ctaHref     String
+  imageUrl    String
+  videoUrl    String?
+  order       Int      @default(0)
+  active      Boolean  @default(true)
+}
+
+model SiteMeta {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
