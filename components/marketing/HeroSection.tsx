@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-
-const tabs = ["By Duration", "By Project", "Full Day"];
+import { Search } from "lucide-react";
+import Link from "next/link";
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -11,13 +11,13 @@ export default function HeroSection() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const secondaryRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entry animations on mount
       gsap.fromTo(
         headlineRef.current,
         { opacity: 0, y: 50 },
@@ -28,8 +28,12 @@ export default function HeroSection() {
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 1, delay: 0.6 }
       );
+      gsap.fromTo(
+        searchRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, delay: 0.9 }
+      );
 
-      // Scroll-pinned timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -40,7 +44,6 @@ export default function HeroSection() {
         },
       });
 
-      // Phase 1: image scale + parallax feel
       tl.fromTo(
         imageRef.current,
         { scale: 1 },
@@ -48,7 +51,6 @@ export default function HeroSection() {
         0
       );
 
-      // Phase 2: secondary stats fade in
       tl.fromTo(
         secondaryRef.current,
         { opacity: 0, y: 60 },
@@ -56,18 +58,7 @@ export default function HeroSection() {
         0.2
       );
 
-      // Phase 3: CTA bar reveal + dark overlay
-      tl.fromTo(
-        ctaRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6 },
-        0.5
-      );
-      tl.to(
-        overlayRef.current,
-        { opacity: 0.5, duration: 0.4 },
-        0.6
-      );
+      tl.to(overlayRef.current, { opacity: 0.5, duration: 0.4 }, 0.6);
     }, sectionRef);
 
     return () => ctx.revert();
@@ -79,110 +70,91 @@ export default function HeroSection() {
         ref={heroContentRef}
         className="relative w-full h-screen overflow-hidden"
       >
-        {/* Background image */}
         <div
           ref={imageRef}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-void"
           style={{
-            backgroundImage: `url('/assets/hero-bg.jpg')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=2400&q=90')`,
             willChange: "transform",
           }}
         />
 
-        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
 
-        {/* Dark overlay for phase 3 */}
         <div
           ref={overlayRef}
           className="absolute inset-0 bg-black opacity-0"
         />
 
-        {/* Content */}
         <div className="relative z-10 flex flex-col justify-center h-full max-w-7xl mx-auto px-6">
           <div className="mt-20">
             <h1
               ref={headlineRef}
-              className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight"
+              className="font-display text-5xl sm:text-7xl lg:text-8xl font-800 text-white leading-[0.95] tracking-tight"
             >
-              Precision
+              The Intelligence
               <br />
-              Beyond Horizon
+              Behind the Machine.
             </h1>
             <p
               ref={subRef}
-              className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-text-secondary mt-6 max-w-md"
+              className="font-mono text-xs sm:text-sm uppercase tracking-[0.25em] text-white/50 mt-6 max-w-lg"
             >
-              AI-powered drones and autonomous vehicles for the next frontier
+              AI-powered performance systems engineered for the world&apos;s most
+              exceptional vehicles.
             </p>
-          </div>
 
-          {/* Secondary stats block — revealed on scroll */}
-          <div
-            ref={secondaryRef}
-            className="mt-12 grid grid-cols-3 gap-8 max-w-lg opacity-0"
-          >
-            <div>
-              <div className="font-display text-3xl font-bold text-white">8K</div>
-              <div className="font-mono text-xs text-text-mono uppercase tracking-wider mt-1">
-                Camera Resolution
-              </div>
-            </div>
-            <div>
-              <div className="font-display text-3xl font-bold text-white">45</div>
-              <div className="font-mono text-xs text-text-mono uppercase tracking-wider mt-1">
-                Min Flight Time
-              </div>
-            </div>
-            <div>
-              <div className="font-display text-3xl font-bold text-white">AI</div>
-              <div className="font-mono text-xs text-text-mono uppercase tracking-wider mt-1">
-                Obstacle Detect
-              </div>
-            </div>
-          </div>
-
-          {/* CTA + Search bar — revealed on scroll */}
-          <div ref={ctaRef} className="absolute bottom-12 left-6 right-6 opacity-0">
-            <div className="max-w-4xl mx-auto">
-              <div className="flex gap-0 mb-0">
-                {tabs.map((tab, i) => (
-                  <button
-                    key={tab}
-                    className={`px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors ${
-                      i === 0
-                        ? "bg-surface-raised text-white"
-                        : "bg-surface text-text-secondary hover:text-white"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-              <div className="bg-surface-raised border border-border-subtle flex flex-wrap items-center">
-                <div className="flex-1 min-w-[140px] px-5 py-4 border-r border-border-subtle">
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-text-mono mb-1">
-                    Location
-                  </div>
-                  <div className="text-sm text-text-secondary">Select region...</div>
-                </div>
-                <div className="flex-1 min-w-[140px] px-5 py-4 border-r border-border-subtle">
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-text-mono mb-1">
-                    Start Date
-                  </div>
-                  <div className="text-sm text-text-secondary">
-                    {new Date().toLocaleDateString()}
-                  </div>
-                </div>
-                <div className="flex-1 min-w-[140px] px-5 py-4 border-r border-border-subtle">
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-text-mono mb-1">
-                    Duration
-                  </div>
-                  <div className="text-sm text-text-secondary">1 day</div>
-                </div>
-                <button className="bg-accent hover:bg-accent-hover text-white font-mono text-sm uppercase tracking-wider px-8 py-6 transition-colors">
+            {/* Search bar */}
+            <div
+              ref={searchRef}
+              className="mt-12 max-w-[640px] opacity-0"
+            >
+              <div className="flex items-center gap-4 bg-white/[0.06] border border-white/15 rounded-[2px] px-5 py-4 focus-within:border-white/40 transition-colors">
+                <Search size={18} className="text-white/40 flex-shrink-0" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search vehicle systems, performance AI, fleet tech..."
+                  className="bg-transparent border-none text-white font-body font-300 text-base placeholder:text-white/35 flex-1 focus:outline-none"
+                />
+                <button
+                  onClick={() => console.log("Search:", query)}
+                  className="bg-accent hover:bg-accent-hover text-white font-mono uppercase text-xs tracking-widest px-6 py-2.5 rounded-[2px] transition-colors flex-shrink-0"
+                >
                   Search
                 </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats — revealed on scroll */}
+          <div
+            ref={secondaryRef}
+            className="mt-12 grid grid-cols-4 gap-8 max-w-2xl opacity-0"
+          >
+            <div>
+              <div className="font-display text-3xl font-700 text-white">240+</div>
+              <div className="font-mono text-xs text-white/40 uppercase tracking-widest mt-1">
+                Vehicle Systems Deployed
+              </div>
+            </div>
+            <div>
+              <div className="font-display text-3xl font-700 text-white">98%</div>
+              <div className="font-mono text-xs text-white/40 uppercase tracking-widest mt-1">
+                Autonomous Accuracy Rate
+              </div>
+            </div>
+            <div>
+              <div className="font-display text-3xl font-700 text-white">0.3s</div>
+              <div className="font-mono text-xs text-white/40 uppercase tracking-widest mt-1">
+                AI Response Latency
+              </div>
+            </div>
+            <div>
+              <div className="font-display text-3xl font-700 text-white">12+</div>
+              <div className="font-mono text-xs text-white/40 uppercase tracking-widest mt-1">
+                OEM Partnerships
               </div>
             </div>
           </div>

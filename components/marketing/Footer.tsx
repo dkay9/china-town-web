@@ -16,12 +16,12 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link
               href="/"
-              className="font-display text-2xl font-bold text-white tracking-tight"
+              className="font-display font-700 text-2xl text-white tracking-tight"
             >
               CTOWN
             </Link>
             <p className="font-body text-sm text-text-secondary mt-3 mb-6 max-w-xs">
-              Premium drone and AI technology for enterprises that demand precision.
+              AI-powered vehicle technology for enterprises that demand precision.
             </p>
             <div className="flex gap-0">
               <input
