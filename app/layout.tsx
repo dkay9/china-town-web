@@ -42,7 +42,7 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${mono.variable} ${body.variable} ${script.variable}`}
     >
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
