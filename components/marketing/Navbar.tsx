@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search } from "lucide-react";
+// import { Search } from "lucide-react";
 import MenuOverlay from "./MenuOverlay";
 
 export default function Navbar() {
@@ -33,14 +33,6 @@ export default function Navbar() {
           </Link>
 
           <div className="flex items-center gap-5">
-            <button
-              aria-label="Search"
-              className="text-white/70 hover:text-white transition-colors"
-              data-cursor="expand"
-            >
-              <Search size={20} strokeWidth={1.5} />
-            </button>
-
             <button
               aria-label="Toggle menu"
               className="relative w-6 h-5 flex flex-col justify-between"
