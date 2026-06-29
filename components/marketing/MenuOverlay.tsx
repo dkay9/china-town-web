@@ -192,7 +192,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
                 (e.target as HTMLImageElement).style.display = "none";
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6">
               <span className="font-display font-700 text-2xl text-white uppercase tracking-wide">
                 {tile.name}

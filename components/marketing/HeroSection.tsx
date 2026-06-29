@@ -79,7 +79,7 @@ export default function HeroSection() {
           }}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/50 to-black/80" />
 
         <div
           ref={overlayRef}
@@ -107,10 +107,10 @@ export default function HeroSection() {
             {/* Search bar */}
             <div
               ref={searchRef}
-              className="mt-12 max-w-[640px] opacity-0"
+              className="mt-12 max-w-160 opacity-0"
             >
-              <div className="flex items-center gap-4 bg-white/[0.06] border border-white/15 rounded-[2px] px-5 py-4 focus-within:border-white/40 transition-colors">
-                <Search size={18} className="text-white/40 flex-shrink-0" />
+              <div className="flex items-center gap-4 bg-white/6 border border-white/15 rounded-xs px-5 py-4 focus-within:border-white/40 transition-colors">
+                <Search size={18} className="text-white/40 shrink-0" />
                 <input
                   type="text"
                   value={query}
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 />
                 <button
                   onClick={() => console.log("Search:", query)}
-                  className="bg-accent hover:bg-accent-hover text-white font-mono uppercase text-xs tracking-widest px-6 py-2.5 rounded-[2px] transition-colors flex-shrink-0"
+                  className="bg-accent hover:bg-accent-hover text-white font-mono uppercase text-xs tracking-widest px-6 py-2.5 rounded-xs transition-colors shrink-0"
                 >
                   Search
                 </button>

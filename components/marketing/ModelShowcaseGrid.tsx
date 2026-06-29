@@ -96,7 +96,7 @@ export default function ModelShowcaseGrid() {
                 }}
               />
 
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/70" />
+              <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/70" />
 
               <div className="absolute inset-x-0 top-[12%] flex flex-col items-center text-center px-8">
                 <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/70 mb-4">

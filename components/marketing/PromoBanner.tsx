@@ -86,7 +86,7 @@ export default function PromoBanner() {
   {/* Badge — stacks last on mobile, sits inline on desktop */}
   <div
     ref={percentRef}
-    className="flex-shrink-0 w-full lg:w-auto"
+    className="shrink-0 w-full lg:w-auto"
   >
     <div className="bg-accent/10 border border-accent/20 rounded-lg p-8 text-center">
       <div className="font-display font-700 text-6xl lg:text-7xl text-accent">

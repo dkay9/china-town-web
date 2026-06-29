@@ -97,10 +97,10 @@ export default function TrendVehicles() {
               ref={(el) => {
                 if (el) cardsRef.current[i] = el;
               }}
-              className="group min-w-[260px] snap-start flex-shrink-0 lg:min-w-0 bg-gray-50 rounded-lg overflow-hidden border border-gray-100 hover:border-gray-200 transition-colors"
+              className="group min-w-65 snap-start shrink-0 lg:min-w-0 bg-gray-50 rounded-lg overflow-hidden border border-gray-100 hover:border-gray-200 transition-colors"
               data-cursor="expand"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+              <div className="relative aspect-4/3 overflow-hidden bg-gray-100">
                 {product.badge && (
                   <span className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-void text-white font-mono text-[10px] uppercase tracking-wider rounded-sm">
                     {product.badge}

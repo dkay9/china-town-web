@@ -84,7 +84,7 @@ export default function CategoryGrid() {
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.06]"
                 style={{ backgroundImage: `url('${cat.image}')` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <span className="font-display font-700 text-xl text-white">
                   {cat.name}

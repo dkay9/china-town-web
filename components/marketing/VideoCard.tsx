@@ -76,7 +76,7 @@ export default function VideoCard({
         />
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
 
       <div className="absolute bottom-0 inset-x-0 p-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.35em] text-white/50 mb-1">
@@ -99,7 +99,7 @@ export default function VideoCard({
           }`}
         >
           <div className="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-sm">
-            <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" />
+            <div className="w-0 h-0 border-t-8 border-t-transparent border-l-14px border-l-white border-b-8 border-b-transparent ml-1" />
           </div>
         </div>
       )}

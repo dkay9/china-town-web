@@ -30,9 +30,9 @@ export default function DroneSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-[#0a0a0a] grid grid-cols-1 lg:grid-cols-2 min-h-[600px]"
+      className="relative z-10 bg-[#0a0a0a] grid grid-cols-1 lg:grid-cols-2 min-h-150"
     >
-      <div className="relative h-[400px] lg:h-auto overflow-hidden">
+      <div className="relative h-100 lg:h-auto overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1200&q=80"
           alt="Drone systems"
@@ -43,7 +43,7 @@ export default function DroneSection() {
             (e.target as HTMLImageElement).style.display = "none";
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0a0a0a]/50 hidden lg:block" />
+        <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#0a0a0a]/50 hidden lg:block" />
       </div>
 
       <div
