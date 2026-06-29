@@ -45,12 +45,12 @@ export default function ProductsPage() {
           </p>
 
           {/* Filter tabs */}
-          <div className="flex gap-3 mt-10">
+          <div className="flex flex-wrap gap-3 mt-10">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => setFilter(cat.value)}
-                className={`font-mono text-xs uppercase tracking-widest px-5 py-2.5 border transition-colors ${
+                className={`font-mono text-xs uppercase tracking-widest px-3 py-2 border transition-colors ${
                   filter === cat.value
                     ? "bg-white text-black border-white"
                     : "bg-transparent text-white/50 border-white/15 hover:border-white/40 hover:text-white"

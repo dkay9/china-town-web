@@ -77,7 +77,7 @@ export default function CategoryGrid() {
               ref={(el) => {
                 if (el) cardsRef.current[i] = el;
               }}
-              className="group relative aspect-[3/2] overflow-hidden rounded-lg cursor-pointer"
+              className="group relative aspect-3/2 overflow-hidden rounded-lg cursor-pointer"
               data-cursor="expand"
             >
               <div

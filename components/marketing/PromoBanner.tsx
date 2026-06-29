@@ -72,7 +72,7 @@ export default function PromoBanner() {
   {/* Image — stacks below text on mobile */}
   <div
     ref={imageRef}
-    className="flex-1 relative w-full h-[220px] sm:h-[300px] lg:h-[400px]"
+    className="flex-1 relative w-full h-55 sm:h-75 lg:h-100"
   >
     <div
       className="absolute inset-0 bg-contain bg-center bg-no-repeat"
