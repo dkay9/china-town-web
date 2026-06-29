@@ -34,7 +34,7 @@ export default function ProductCarousel() {
 
   return (
     <section
-      className="relative z-10 bg-[#0a0a0a] py-[120px] overflow-hidden"
+      className="relative z-10 bg-[#0a0a0a] py-30 overflow-hidden"
       onMouseEnter={stopAutoplay}
       onMouseLeave={startAutoplay}
     >
@@ -62,7 +62,7 @@ export default function ProductCarousel() {
             return (
               <div
                 key={product.id}
-                className="flex-shrink-0 w-[85vw] sm:w-[600px] transition-all duration-500"
+                className="shrink-0 w-[85vw] sm:w-150 transition-all duration-500"
                 style={{
                   opacity: isActive ? 1 : 0.45,
                   filter: isActive ? "none" : "blur(4px)",
@@ -74,7 +74,7 @@ export default function ProductCarousel() {
                 onClick={() => !isActive && setActive(i)}
               >
                 {/* Image */}
-                <div className="relative h-[280px] sm:h-[380px] bg-surface overflow-hidden">
+                <div className="relative h-70 sm:h-95 bg-surface overflow-hidden">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -88,7 +88,7 @@ export default function ProductCarousel() {
                 </div>
 
                 {/* Content panel */}
-                <div className="bg-[#0f0f0f] border-t border-white/[0.06] px-6 py-6 sm:px-8 sm:py-7">
+                <div className="bg-[#0f0f0f] border-t border-white/6 px-6 py-6 sm:px-8 sm:py-7">
                   <span className="font-mono text-xs uppercase tracking-widest text-white/40">
                     {product.year} · {product.category}
                   </span>
@@ -113,14 +113,14 @@ export default function ProductCarousel() {
         {/* Navigation arrows */}
         <button
           onClick={prev}
-          className="absolute left-4 lg:left-6 top-[140px] sm:top-[190px] z-10 w-12 h-12 rounded-full bg-white/[0.08] border border-white/[0.12] flex items-center justify-center text-white font-display text-xl hover:bg-white/[0.16] transition-colors duration-200"
+          className="absolute left-4 lg:left-6 top-35 sm:top-47.5 z-10 w-12 h-12 rounded-full bg-white/8 border border-white/12 flex items-center justify-center text-white font-display text-xl hover:bg-white/16 transition-colors duration-200"
           aria-label="Previous"
         >
           ‹
         </button>
         <button
           onClick={next}
-          className="absolute right-4 lg:right-6 top-[140px] sm:top-[190px] z-10 w-12 h-12 rounded-full bg-white/[0.08] border border-white/[0.12] flex items-center justify-center text-white font-display text-xl hover:bg-white/[0.16] transition-colors duration-200"
+          className="absolute right-4 lg:right-6 top-35 sm:top-47.5 z-10 w-12 h-12 rounded-full bg-white/8 border border-white/12 flex items-center justify-center text-white font-display text-xl hover:bg-white/16 transition-colors duration-200"
           aria-label="Next"
         >
           ›

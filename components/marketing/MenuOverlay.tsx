@@ -126,7 +126,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
   if (!isOpen) return null;
 
   return (
-    <div ref={overlayRef} className="fixed inset-0 z-[100] flex">
+    <div ref={overlayRef} className="fixed inset-0 z-100 flex">
       {/* Left panel — white */}
       <div
         ref={leftRef}
@@ -179,7 +179,7 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
             key={tile.slug}
             href={`/products/${tile.slug}`}
             onClick={animateClose}
-            className="group relative flex-1 min-h-[200px] overflow-hidden"
+            className="group relative flex-1 min-h-50 overflow-hidden"
             data-cursor="expand"
           >
             <Image

@@ -64,9 +64,9 @@ export default function ModelShowcaseGrid() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-[#0a0a0a] px-6 sm:px-[60px] pt-[120px] pb-[160px]"
+      className="relative z-10 bg-[#0a0a0a] px-6 sm:px-15 pt-30 pb-40"
     >
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7x mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/40 mb-4">
           Our Vehicle Systems
         </p>

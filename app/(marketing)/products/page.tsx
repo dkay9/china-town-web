@@ -71,7 +71,7 @@ export default function ProductsPage() {
               href={`/products/${product.slug}`}
               className="group bg-[#0f0f0f] overflow-hidden hover:ring-1 hover:ring-white/10 transition-all"
             >
-              <div className="relative h-[260px] overflow-hidden">
+              <div className="relative h-65 overflow-hidden">
                 <Image
                   src={product.image}
                   alt={product.name}
