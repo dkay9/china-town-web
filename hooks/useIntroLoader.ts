@@ -3,21 +3,18 @@
 import { useState, useEffect } from 'react'
 
 export function useIntroLoader() {
-  // Static literals — identical on server and client first render, no mismatch possible.
-  const [showIntro, setShowIntro] = useState(true)
+  const [showIntro, setShowIntro] = useState(false)
   const [introComplete, setIntroComplete] = useState(false)
-  const [skipAnimation, setSkipAnimation] = useState(false)
 
   useEffect(() => {
-    // Runs client-only, after hydration — safe to check browser APIs here.
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const hasPlayed = sessionStorage.getItem('intro-played')
 
     if (hasPlayed || prefersReduced) {
-      setSkipAnimation(true)
-      setShowIntro(false)
       setIntroComplete(true)
+      return
     }
+    setShowIntro(true)
   }, [])
 
   const handleComplete = () => {
@@ -26,5 +23,5 @@ export function useIntroLoader() {
     setIntroComplete(true)
   }
 
-  return { showIntro, introComplete, skipAnimation, handleComplete }
+  return { showIntro, introComplete, handleComplete }
 }
