@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 interface GearLoaderProps {
   onComplete: () => void
   minDisplayMs?: number
+  skipAnimation?: boolean
 }
 
 function generateGearPath(
@@ -41,7 +42,7 @@ function generateGearPath(
   return `M ${points.join(' L ')} Z`
 }
 
-export default function GearLoader({ onComplete, minDisplayMs = 1800 }: GearLoaderProps) {
+export default function GearLoader({ onComplete, minDisplayMs = 1800, skipAnimation = false }: GearLoaderProps) {
   const largeGearRef = useRef<SVGGElement>(null)
   const smallGearRef = useRef<SVGGElement>(null)
   const [isFadingOut, setIsFadingOut] = useState(false)
@@ -52,6 +53,13 @@ export default function GearLoader({ onComplete, minDisplayMs = 1800 }: GearLoad
       document.body.style.overflow = ''
     }
   }, [])
+
+  useEffect(() => {
+    if (!skipAnimation) return
+    setIsFadingOut(true)
+    const timer = setTimeout(onComplete, 200)
+    return () => clearTimeout(timer)
+  }, [skipAnimation, onComplete])
 
   useEffect(() => {
     const large = largeGearRef.current
