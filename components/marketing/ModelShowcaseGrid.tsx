@@ -70,7 +70,7 @@ export default function ModelShowcaseGrid() {
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/40 mb-4">
           Our Vehicle Systems
         </p>
-        <h2 className="font-display font-800 text-[clamp(2.5rem,5vw,4rem)] uppercase tracking-[0.05em] text-white mb-16">
+        <h2 className="font-display font-800 text-[clamp(2.5rem,5vw,4rem)] uppercase tracking-wider text-white mb-16">
           Engineered for Exceptional Machines.
         </h2>
 

@@ -19,7 +19,7 @@ const showcaseItems = [
     slug: "vantage-vision-pro",
     image:
       "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1200&q=80",
-    video: "/assets/videos/vantage-vision.mp4",
+    video: "/assets/videos/car-vid.mp4",
   },
   {
     title: "Kinetic Ride Control",
@@ -57,9 +57,9 @@ export default function VideoShowcase() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-[#080808] px-6 sm:px-[60px] py-[120px]"
+      className="relative z-10 bg-void px-6 sm:px-15 py-30"
     >
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-7xl mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/40 mb-4">
           In Motion
         </p>
